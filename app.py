@@ -10,4 +10,4 @@ if upload is not None:
 
 is st.button("Caption"):
 captions = caption(image)
-st.write(captions[0]['generated_text])
+st.write(captions[0]['generated_text'])
