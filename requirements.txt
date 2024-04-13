@@ -2,7 +2,4 @@ streamlit
 torch
 transformers
 pillow
-requests
-torchtext
-tqdm
-matplotlib
+
