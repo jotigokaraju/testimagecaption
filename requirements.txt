@@ -2,7 +2,6 @@ streamlit
 torch
 transformers
 pillow
-pickle
 requests
 torchtext
 tqdm
