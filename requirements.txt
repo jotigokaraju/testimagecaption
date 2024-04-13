@@ -5,3 +5,4 @@ pillow
 requests
 torchtext
 tqdm
+matplotlib
