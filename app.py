@@ -34,5 +34,7 @@ def show_n_generate(url, greedy = True, model = model_raw):
     return generated_text
 
 image = "http://images.cocodataset.org/val2017/000000039769.jpg"
-answer = show_n_generate(image, greedy = False)
+if st.button("run"):
+    answer = show_n_generate(image, greedy = False)
+    st.write(answer)
 st.write(answer)
