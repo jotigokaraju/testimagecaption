@@ -37,4 +37,3 @@ image = "http://images.cocodataset.org/val2017/000000039769.jpg"
 if st.button("run"):
     answer = show_n_generate(image, greedy = False)
     st.write(answer)
-st.write(answer)
