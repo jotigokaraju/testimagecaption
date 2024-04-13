@@ -18,8 +18,8 @@ model_raw = VisionEncoderDecoderModel.from_pretrained("nlpconnect/vit-gpt2-image
 image_processor = ViTImageProcessor.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
 tokenizer = GPT2TokenizerFast.from_pretrained("nlpconnect/vit-gpt2-image-captioning")
 
-def show_n_generate(image, greedy = True, model = model_raw):
-
+def show_n_generate(url, greedy = True, model = model_raw):
+    image = Image.open(requests.get(url, stream =True).raw)
     pixel_values   = image_processor(image, return_tensors ="pt").pixel_values
 
     if greedy:
@@ -33,4 +33,6 @@ def show_n_generate(image, greedy = True, model = model_raw):
     generated_text = tokenizer.batch_decode(generated_ids, skip_special_tokens=True)[0]
     return generated_text
 
-show_n_generate(image, greedy = False)
+image = "http://images.cocodataset.org/val2017/000000039769.jpg"
+answer = show_n_generate(image, greedy = False)
+st.write(answer)
