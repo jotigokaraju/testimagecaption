@@ -8,6 +8,6 @@ if upload is not None:
     image = Image.open(upload)
     st.image(image)
 
-is st.button("Caption"):
-captions = caption(image)
-st.write(captions[0]['generated_text'])
+if st.button("Caption"):
+    captions = caption(image)
+    st.write(captions[0]['generated_text'])
