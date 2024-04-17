@@ -3,7 +3,7 @@ from transformers import TrOCRProcessor, VisionEncoderDecoderModel
 from PIL import Image
 
 # Load the processor and model
-@st.cache_resource
+@st.cache(allow_output_mutation=True)
 def load_processor_model():
     processor = TrOCRProcessor.from_pretrained('microsoft/trocr-base-str')
     model = VisionEncoderDecoderModel.from_pretrained('microsoft/trocr-base-str')
@@ -27,7 +27,7 @@ def main():
             # Process image with the processor
             pixel_values = processor(images=image, return_tensors="pt").pixel_values
             # Generate caption with the model
-            generated_ids = model.vision_encoder(pixel_values)
+            generated_ids = model(pixel_values).logits
             generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
             # Display the generated caption
             st.write("Generated Caption:", generated_text)
