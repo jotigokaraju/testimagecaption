@@ -14,7 +14,7 @@ def load_processor():
 def load_model():
     VisionEncoderDecoderModel.from_pretrained('microsoft/trocr-base-str')
 
-pixel_values = processor(images=image, return_tensors="pt").pixel_values
+
 
 # Streamlit script
 def main():
@@ -29,6 +29,7 @@ def main():
         st.image(Image.open(photo))
 
     if st.button("Caption") and image is not None:
+        pixel_values = processor(images=image, return_tensors="pt").pixel_values
         generated_ids = model.generate(pixel_values)
         generated_text = processor.batch_decode(generated_ids, skip_special_tokens=True)[0]
         st.write(generated_text)
